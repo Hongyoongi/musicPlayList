@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>MusicPlayList</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" type="text/css" href="./css/music.css">
+  <script src="./js/musicJs.js"></script>
+ </head>
+ <body onload="mInit()">
+  <div id="wrapper">
+	<div class ="main">
+		<form>
+			<div class="top">
+				<img id="playJung"src="./img/norae.png">
+				<a id="msg">🎧플레이리스트</a>
+				<img src="./img/equalizer.png" >
+				<img src="./img//menu.png" onclick="mList()">
+				<select id="selectList" size="5" onclick="imgCng()"></select>
+			</div>
+			<div class="photo">
+				<p id="musicList">아이들-나는 아픈건 딱 질색이니까</p>
+				<img id="showImg" src="./img/idle.jpg">
+			</div>
+			<div class="range_bar">
+				<input type="range" id="mus" name="mus" min="0" max="" step="0.5"value="0" onchange="progress()">
+				<label for="mus"id="curr">00:00/00:00 </label>
+			</div>
+			<div class="bottom">
+				<span class="material-symbols-outlined"id="musicLoop" onclick="mLoop()">autorenew</span>
+				<img src="./img/pre1.png"onclick="musicSet(0)">
+				<img src="./img/pre.png" onclick="musicSet(1)">
+				<img src="./img/play.png" id="playBtn" onclick="musicPlay()">
+				<img src="./img/next.png"onclick="musicSet(2)">
+				<img src="./img/next1.png"onclick="musicSet(3)">
+				<img src="./img/stop.png" onclick="musicStop()">
+			</div>
+			<audio id="ssong" onended="nextPlay(), loopMusic()"><source src="./audio/아이들-나는 아픈 건 딱 질색이니까.mp3"></audio>
+		</div>
+	</form>
+<div>
+</body>
+</html>

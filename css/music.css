@@ -1,0 +1,79 @@
+ @font-face {
+	font-family:singleDayFont;
+	src: url(./../font/SingleDay-Regular.ttf);
+ }
+#wrapper{/*전체 영역*/
+	margin:0 auto;
+	padding: 50px;
+}
+.main{/*플레이 리스트 구역*/
+	position: relative;
+	margin:0 auto;
+	width:450px;
+	height:680px;
+	text-align : center;
+	border: 2px solid black;
+	border-radius:20px;
+	background-color: lightgray;
+}
+.top{/*상단 영역*/
+	margin:20px 20px ;	
+	font-family:singleDayFont;
+	font-size: 20px;
+	height: 30px;
+}
+#playJung{/*노래가 플레이중이라는 것을 알려주는 gif이미지*/
+	float: left;
+	width:50px;
+	height:50px;
+	border-radius: 100%;
+	cursor:auto;
+}
+.top img{/*상단바의 이미지*/
+	float: right;
+	padding:0 5px;
+	width:30px;
+	height:30px;
+	cursor: pointer;
+}
+#selectList{/*노래 리스트*/
+	margin-left: 340px;
+	font-family:singleDayFont;
+	font-size: 18px;
+	display:none;
+	cursor: pointer;
+	appearance: none;
+	position: absolute;
+}
+.photo p{/*노래 제목*/
+	font-family:singleDayFont;
+	font-size: 20px;
+}
+.photo img{ /*노래 이미지*/
+	border-radius:10px;
+	width:300px;
+	height:400px;
+}
+#mus{/*프로그래스바*/
+	margin: 20px auto;
+	margin-top: 30px;
+	background-color: #fff;
+	width: 250px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.bottom{/*버튼들이 있는 영역*/
+	text-align: center;
+	margin-top:20px;
+}
+.bottom img, .material-symbols-outlined{/*노래 상호작용 버튼*/
+	display: inline-block;
+	margin-right: 13px;
+	width:30px;
+	height:30px;
+	cursor: pointer;
+	opacity: 0.7;
+}
+.bottom img:hover, .material-symbols-outlined:hover{/*노래 상호작용 버튼을 눌렸을 때*/
+	opacity: 1;
+}
