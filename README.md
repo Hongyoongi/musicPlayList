@@ -10,3 +10,6 @@
 🎨 UI/UX
 
   보기 편하고 안정된 디자인으로 만들자
+
+
+![image](https://github.com/Hongyoongi/yungih3/assets/167847389/b4fbaa23-3634-48a5-bd48-6714d1e46820)
