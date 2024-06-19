@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CATALOG>
+  <CD>
+    <TITLE>아이들(IDLE)_- 나는 아픈건 딱 질색이니까</TITLE>
+    <CDIMG>./img/idle.jpg</CDIMG>
+    <CDMUSIC>./audio/아이들-나는 아픈 건 딱 질색이니까.mp3</CDMUSIC>
+  </CD>
+    <CD>
+    <TITLE>아이들(IDLE) - Allergy</TITLE>
+    <CDIMG>./img/allergy.jpg</CDIMG>
+    <CDMUSIC>./audio/I-DLE-Allergy Official Audio.mp3</CDMUSIC>
+  </CD>
+    <CD>
+    <TITLE>아이유(IU) - 라일락</TITLE>
+    <CDIMG>./img/lilac.jpg</CDIMG>
+    <CDMUSIC>./audio/IU(아이유)-LILAC(라일락).mp3</CDMUSIC>
+  </CD>
+    <CD>
+    <TITLE>아이유(IU) - 아이와 나의 바다</TITLE>
+    <CDIMG>./img/mySea.jpg</CDIMG>
+    <CDMUSIC>./audio/아이유-아이와 나의 바다.mp3</CDMUSIC>
+  </CD>
+    <CD>
+    <TITLE>TWS(투어스) - 첫 만남은 계획대로 되지 않아</TITLE>
+    <CDIMG>./img/firstmeet.jpg</CDIMG>
+    <CDMUSIC>./audio/TWS(투어스)-첫 만남은 계획대로 되지 않아.mp3</CDMUSIC>
+  </CD>
+      <CD>
+    <TITLE>IVE(아이브) - Off The Record</TITLE>
+    <CDIMG>./img/offtherecode.jpg</CDIMG>
+    <CDMUSIC>./audio/IVE(아이브)-Off The Record.mp3</CDMUSIC>
+  </CD>
+      <CD>
+    <TITLE>에이프릴 - 봄의 나라 이야기</TITLE>
+    <CDIMG>./img/spring.jpg</CDIMG>
+    <CDMUSIC>./audio/APRIL- 봄의 나라 이야기 April Story.mp3</CDMUSIC>
+  </CD>
+      <CD>
+    <TITLE>헤이즈 - 비도 오고 그래서</TITLE>
+    <CDIMG>./img/raining.jpg</CDIMG>
+    <CDMUSIC>./audio/헤이즈-비도 오고 그래서.mp3</CDMUSIC>
+  </CD>
+      <CD>
+    <TITLE>케이시 - 오늘 헤어졌어요</TITLE>
+    <CDIMG>./img/brokeUp.jpg</CDIMG>
+    <CDMUSIC>./audio/케이시-오늘 헤어졌어요.mp3</CDMUSIC>
+  </CD>
+  </CATALOG>
