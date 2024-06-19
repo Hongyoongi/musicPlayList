@@ -1,32 +1,38 @@
-imgAry=["./img/idle.jpg","./img/allergy.jpg","./img/lilac.jpg","./img/mySea.jpg"
-,"./img/firstmeet.jpg"];
-
-txtAry=["아이들(IDLE)-나는 아픈건 딱 질색이니까","아이들(IDLE)-Allergy"
-,"아이유(IU)-라일락","아이유(IU)-아이와 나의 바다"
-,"TWS(투어스)-첫 만남은 계획대로 되지 않아"];
-
-audioAry=["./audio/아이들-나는 아픈 건 딱 질색이니까.mp3","./audio/I-DLE-Allergy Official Audio.mp3"
-,"./audio/IU(아이유)-LILAC(라일락).mp3"
-,"./audio/아이유-아이와 나의 바다.mp3"
-,"./audio/TWS(투어스)-첫 만남은 계획대로 되지 않아.mp3"
-]
+function loadDoc() {
+const xhttp = new XMLHttpRequest();
+xhttp.onload = function() {
+    myFunction(this);
+    
+  }
+  xhttp.open("GET", "cd_catalog.xml");
+  xhttp.send();
+}
+let x;
+function myFunction(xml){
+    let xmlDoc = xml.responseXML;
+    x = xmlDoc.getElementsByTagName("CD");
+    document.getElementById("selectList").innerHTML =
+    "<option selected>"+x[0].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue+"</option>"
+    for(let i =1; i<x.length; i++){
+        document.getElementById("selectList").innerHTML +=
+        "<option>"+x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue+"</option>"
+    }
+}
 
 let selectIdx,optionList,txt,idx,audio, playBtn, playJung,msg,msgChk,time,vol;
 let chk= true;
 
 function mInit(){/*select창 로드 및 뮤직 로드*/
-    document.getElementById("selectList").innerHTML=
-    "<option selected>"+txtAry[0]+"</option>"
-    for(var i =1; i<txtAry.length; i++){
-        document.getElementById("selectList").innerHTML+=
-        "<option>"+txtAry[i]+"</option>"
-    }
+    
     audio = document.getElementById("ssong");             // audio 소스 
     playBtn=document.getElementById("playBtn");        // 플레이버튼
     playJung=document.getElementById("playJung");    // 플레이중을 표시하는 이미지
     msgChk=document.getElementById("msg");             //  노래의 상태를 나타내는 구역
     time=document.getElementById("curr");                 //  노래의 총 길이와 현재 부분을 나타내는 구역
     mus=document.getElementById("mus");                  //  노래의 위치를 갈수 있는 range
+    if(audio.ended){
+        mus.value=0;
+    }
 }
 function mList(){/*select창 보이기 숨기기 */
     if(chk){
@@ -44,9 +50,9 @@ function imgCng(){/*이미지변경 */
     txt =optionList[selectIdx].text;
     idx =optionList[selectIdx].index;
     
-    document.getElementById("showImg").src=imgAry[idx];   //노래 목록을 변경하면 이미지 변경
-    document.getElementById("musicList").innerText=txt;     //노래 목록을 변경하면 노래제목 변경
-    audio.src=audioAry[idx];
+    document.getElementById("showImg").src=x[idx].getElementsByTagName("CDIMG")[0].childNodes[0].nodeValue;   //노래 목록을 변경하면 이미지 변경
+    document.getElementById("musicList").innerText=x[idx].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;;     //노래 목록을 변경하면 노래제목 변경
+    audio.src=x[idx].getElementsByTagName("CDMUSIC")[0].childNodes[0].nodeValue;
     audio.play();
     playBtn.src="./img/pause.png";              //노래가 시작하면 재생 이미지 변경
     playJung.src="./img/norae.gif";             //노래가 시작하면 노래 재생중이라는 gif로 움직임
@@ -70,7 +76,7 @@ function musicSet(num){/*노래 넘기기 */
             }
             break;
         case 2:
-            if(idx==imgAry.length-1){
+            if(idx==x.length-1){
                 msg="🎼마지막 노래";
             }else{
                 idx++; 
@@ -78,14 +84,14 @@ function musicSet(num){/*노래 넘기기 */
             }
             break;
         case 3:
-            idx=imgAry.length-1;
+            idx=x.length-1;
             msg="🎼마지막 노래";
             break;
     }
-    document.getElementById("showImg").src=imgAry[idx];             //노래가 넘어갈 때 이미지 변경
-    document.getElementById("musicList").innerText=txtAry[idx];  //노래가 넘어갈 때 제목 변경
+    document.getElementById("showImg").src=x[idx].getElementsByTagName("CDIMG")[0].childNodes[0].nodeValue;             //노래가 넘어갈 때 이미지 변경
+    document.getElementById("musicList").innerText=x[idx].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;  //노래가 넘어갈 때 제목 변경
     document.getElementById("selectList").selectedIndex = idx;      //노래가 넘어갈 때 목록의 focus 이동
-    audio.src=audioAry[idx];        //노래를 선택하는 값으로 load
+    audio.src=x[idx].getElementsByTagName("CDMUSIC")[0].childNodes[0].nodeValue;         //노래를 선택하는 값으로 load
     msgChk.innerText=msg;         //노래의 현재 상태를 보여주는 메시지
     playBtn.src="./img/pause.png";
     playJung.src="./img/norae.gif";
@@ -145,8 +151,9 @@ function mLoop(){/*반복재생*/
         document.getElementById("musicLoop").style.color="black";
         swLoop=0;
         audio.loop=false;
-    }
+    }   
 }  
+
 function nextPlay(){/*노래가 끝나면 다음 노래로 이동 */
     if(audio.ended){    //노래가 끝나면 배열이 증가
         idx++;
@@ -155,8 +162,8 @@ function nextPlay(){/*노래가 끝나면 다음 노래로 이동 */
     audio.currentTime = 0;                 //노래를 정지하면 처음부분으로 돌아감
     mus.value=0;                                //노래가 넘어갈 때 속성 값을 0으로 돌림
     audio.play();
-    document.getElementById("showImg").src=imgAry[idx];             //노래가 넘어갈 때 이미지 변경
-    document.getElementById("musicList").innerText=txtAry[idx];  //노래가 넘어갈 때 제목 변경
+    document.getElementById("showImg").src=x[idx].getElementsByTagName("CDIMG")[0].childNodes[0].nodeValue;             //노래가 넘어갈 때 이미지 변경
+    document.getElementById("musicList").innerText=x[idx].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;  //노래가 넘어갈 때 제목 변경
     document.getElementById("selectList").selectedIndex = idx;      //노래가 넘어갈 때 목록의 focus 이동
     }
     
